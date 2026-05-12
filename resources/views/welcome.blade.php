@@ -84,6 +84,21 @@
             opacity: 1 !important;
         }
 
+        .scatter-7 {
+            transform: translate(-220%, -30%) scale(1) rotate(-8deg) !important;
+            opacity: 1 !important;
+        }
+
+        .scatter-8 {
+            transform: translate(-50%, -105%) scale(1) rotate(12deg) !important;
+            opacity: 1 !important;
+        }
+
+        .scatter-9 {
+            transform: translate(120%, -30%) scale(1) rotate(5deg) !important;
+            opacity: 1 !important;
+        }
+
         .font-handwriting {
             font-family: 'Dancing Script', cursive;
         }
@@ -114,7 +129,7 @@
         <!-- Hero Section -->
         <section id="hero"
             class="relative min-h-screen flex items-center justify-center overflow-hidden transition-all duration-700"
-            style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=2000'); background-size: cover; background-position: center;">
+            style="background-image: url('https://i.imgur.com/eVj0QEq.jpeg'); background-size: cover; background-position: center;">
             <!-- Darkened Overlay for Text Readability -->
             <div class="absolute inset-0 bg-slate-900/30 z-0"></div>
 
@@ -143,7 +158,7 @@
                     <p class="text-xl md:text-2xl text-stone-100 max-w-lg mb-8 font-medium drop-shadow-md">
                         Welcome to my personal showcase.
                     </p>
-                    <a href="#camera-anchor"
+                    <a href="#camera-anchor" id="start-exploring-btn"
                         class="inline-flex items-center px-8 py-4 bg-slate-900 text-white rounded-full font-bold text-lg hover:bg-indigo-600 transition-all duration-300 shadow-xl hover:-translate-y-1">
                         Start Exploring
                         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -157,8 +172,7 @@
                 <div class="flex-1 flex justify-center md:justify-end relative">
                     <div
                         class="relative w-72 h-72 sm:w-96 sm:h-96 md:w-[450px] md:h-[600px] rounded-2xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-700 group">
-                        <img src="https://cdn.cara.app/production/posts/c1f3dc8b-89b2-4e61-9d28-668523406146/octopie-z5IAkX-GWwEkeEnc1dylr-0B2C4F4B-6509-40D5-BE14-D5F2959C519E.jpg"
-                            alt="Character"
+                        <img src="https://i.imgur.com/KfJccBX.jpeg" alt="Character"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                         <div class="absolute inset-0 ring-1 ring-inset ring-white/20 rounded-2xl"></div>
                     </div>
@@ -222,7 +236,7 @@
                 <!-- Instruction Text -->
                 <div id="camera-label" class="mt-12 text-center opacity-80 group-hover:opacity-100 transition-opacity">
                     <p class="text-sm font-semibold tracking-widest uppercase mb-2">Ready to snap</p>
-                    <h3 class="text-3xl font-serif font-bold text-slate-900">Click to reveal memories</h3>
+                    <h3 class="text-3xl font-serif font-bold text-slate-900">Click to view</h3>
                 </div>
             </div>
         </section>
@@ -264,7 +278,7 @@
                             class="w-full h-full object-cover" />
                     </div>
                     <p class="text-center mt-6 font-handwriting text-2xl text-slate-800 tracking-wide rotate-[-2deg]">
-                        City Lights</p>
+                        Absensi PKL</p>
                 </div>
             </div>
             <div class="polaroid-card wave-1 absolute top-[50%] cursor-pointer" data-id="2">
@@ -318,6 +332,40 @@
                         <img src=https://i.imgur.com/9WIzEoq.jpeg class="w-full h-full object-cover" />
                     </div>
                     <p class="text-center mt-6 font-handwriting text-2xl text-slate-800 tracking-wide">Grit</p>
+                </div>
+            </div>
+
+            <!-- WAVE 3 CARDS -->
+            <div class="polaroid-card wave-3 absolute top-[50%] cursor-pointer" data-id="7">
+                <div
+                    class="bg-white p-4 pb-16 shadow-[0_30px_70px_rgba(0,0,0,0.3)] rounded-sm transform transition-all duration-500 hover:-translate-y-8 hover:shadow-[0_50px_100px_rgba(0,0,0,0.4)]">
+                    <div class="w-48 h-48 sm:w-64 sm:h-64 bg-slate-200 overflow-hidden border border-slate-100">
+                        <img src="https://i.pinimg.com/236x/9b/d8/d9/9bd8d9e193b402fb04b73d60a1c15a8e.jpg"
+                            class="w-full h-full object-cover" />
+                    </div>
+                    <p class="text-center mt-6 font-handwriting text-2xl text-slate-800 tracking-wide rotate-[-1deg]">
+                        Zenith</p>
+                </div>
+            </div>
+            <div class="polaroid-card wave-3 absolute top-[50%] cursor-pointer" data-id="8">
+                <div
+                    class="bg-white p-4 pb-16 shadow-[0_30px_70px_rgba(0,0,0,0.3)] rounded-sm transform transition-all duration-500 hover:-translate-y-8 hover:shadow-[0_50px_100px_rgba(0,0,0,0.4)]">
+                    <div class="w-48 h-48 sm:w-64 sm:h-64 bg-slate-200 overflow-hidden border border-slate-100">
+                        <img src="https://i.pinimg.com/236x/3c/49/7f/3c497ffe3e5a80d08123261256e051ea.jpg"
+                            class="w-full h-full object-cover" />
+                    </div>
+                    <p class="text-center mt-6 font-handwriting text-2xl text-slate-800 tracking-wide rotate-[2deg]">
+                        Horizon</p>
+                </div>
+            </div>
+            <div class="polaroid-card wave-3 absolute top-[50%] cursor-pointer" data-id="9">
+                <div
+                    class="bg-white p-4 pb-16 shadow-[0_30px_70px_rgba(0,0,0,0.3)] rounded-sm transform transition-all duration-500 hover:-translate-y-8 hover:shadow-[0_50px_100px_rgba(0,0,0,0.4)]">
+                    <div class="w-48 h-48 sm:w-64 sm:h-64 bg-slate-200 overflow-hidden border border-slate-100">
+                        <img src="https://i.pinimg.com/236x/fa/ee/5c/faee5c90464099c7061c284a80f905df.jpg"
+                            class="w-full h-full object-cover" />
+                    </div>
+                    <p class="text-center mt-6 font-handwriting text-2xl text-slate-800 tracking-wide">Lush</p>
                 </div>
             </div>
         </div>
@@ -387,15 +435,33 @@
             const modalDesc = document.getElementById('modal-desc');
             const modalInfo = document.getElementById('modal-info');
             const modalImageContainer = document.getElementById('modal-image-container');
+            const startExploringBtn = document.getElementById('start-exploring-btn');
 
             const projectData = {
-                1: { title: "Urban Exploration", desc: "A journey through the neon-lit streets of a bustling metropolis, capturing the essence of city life." },
-                2: { title: "Coastal Serenity", desc: "The calming sound of waves and the soft touch of ocean breeze, frozen in time." },
-                3: { title: "Rustic Mornings", desc: "The aroma of freshly brewed coffee in a quiet, cozy corner of a hidden gem." },
-                4: { title: "Enduring Legacy", desc: "Reflecting on the foundations built over time and the stories passed down through generations." },
-                5: { title: "Modern Vision", desc: "A bold look into the future, blending contemporary aesthetics with innovative ideas." },
-                6: { title: "Steadfast Grit", desc: "The raw energy and determination required to overcome challenges and reach new heights." }
+                1: { title: "Aplikasi Absensi PKL", desc: "App to absent pkl or something lorem ipsum bla bla.", link: "https://github.com/yourusername/absensi-pkl" },
+                2: { title: "Coastal Serenity", desc: "The calming sound of waves and the soft touch of ocean breeze, frozen in time.", link: "#" },
+                3: { title: "Rustic Mornings", desc: "The aroma of freshly brewed coffee in a quiet, cozy corner of a hidden gem.", link: "#" },
+                4: { title: "Enduring Legacy", desc: "Reflecting on the foundations built over time and the stories passed down through generations.", link: "#" },
+                5: { title: "Modern Vision", desc: "A bold look into the future, blending contemporary aesthetics with innovative ideas.", link: "#" },
+                6: { title: "Steadfast Grit", desc: "The raw energy and determination required to overcome challenges and reach new heights.", link: "#" },
+                7: { title: "Alpine Zenith", desc: "Reaching the peak of creative expression amidst the thin air of pure inspiration.", link: "#" },
+                8: { title: "Infinite Horizon", desc: "Tracing the line where dreams meet reality, stretching across the canvas of the mind.", link: "#" },
+                9: { title: "Lush Echoes", desc: "The vibrant resonance of nature's beauty, captured in the heart of a deep, green forest.", link: "#" }
             };
+
+            if (startExploringBtn) {
+                startExploringBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(startExploringBtn.getAttribute('href'));
+                    if (target) {
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
 
             if (cameraTrigger) {
                 cameraTrigger.addEventListener('click', () => {
@@ -414,10 +480,12 @@
                                 nextArrow.style.display = 'flex';
                                 nextArrow.style.opacity = '1';
                             }
+                            document.body.style.overflow = 'hidden';
                             // Clear everything first
                             polaroidCards.forEach((card, index) => {
                                 card.classList.remove(`scatter-${index + 1}`);
                                 card.classList.remove(`scatter-${index + 4}`);
+                                card.classList.remove(`scatter-${index + 7}`);
                                 card.style.opacity = '0';
                                 card.style.visibility = 'hidden';
                                 card.style.pointerEvents = 'none';
@@ -437,7 +505,8 @@
             }
 
             if (resetButton) {
-                resetButton.addEventListener('click', () => {
+                resetButton.addEventListener('click', (e) => {
+                    e.preventDefault();
                     cameraTrigger.classList.remove('snapped');
                     currentWave = 1;
                     if (prevArrow) prevArrow.style.display = 'none';
@@ -448,6 +517,7 @@
                     polaroidCards.forEach((card, index) => {
                         card.classList.remove(`scatter-${index + 1}`);
                         card.classList.remove(`scatter-${index + 4}`);
+                        card.classList.remove(`scatter-${index + 7}`);
                         card.style.opacity = '0';
                         card.style.visibility = 'hidden';
                         card.style.pointerEvents = 'none';
@@ -456,14 +526,11 @@
                         polaroidsSection.style.opacity = '0';
                         setTimeout(() => {
                             polaroidsSection.style.display = 'none';
-                            if (arrow) {
-                                arrow.style.display = 'flex';
-                                arrow.style.opacity = '1';
-                            }
                         }, 500);
                     }
                     if (mainContent) mainContent.classList.remove('content-blur');
                     if (cameraContainer) cameraContainer.classList.remove('camera-sink');
+                    document.body.style.overflow = '';
                 });
             }
 
@@ -472,51 +539,73 @@
             let currentWave = 1;
             if (nextArrow) {
                 nextArrow.addEventListener('click', () => {
-                    currentWave = 2;
-                    document.querySelectorAll('.wave-1').forEach((card, index) => {
-                        card.classList.remove(`scatter-${index + 1}`);
+                    const prevWave = currentWave;
+                    currentWave++;
+
+                    // Hide current wave
+                    document.querySelectorAll(`.wave-${prevWave}`).forEach((card, index) => {
+                        const scatterNum = (prevWave - 1) * 3 + (index + 1);
+                        card.classList.remove(`scatter-${scatterNum}`);
                         card.style.opacity = '0';
                         card.style.pointerEvents = 'none';
-                        setTimeout(() => { if (currentWave !== 1) card.style.visibility = 'hidden'; }, 800);
+                        setTimeout(() => { if (currentWave !== prevWave) card.style.visibility = 'hidden'; }, 800);
                     });
-                    document.querySelectorAll('.wave-2').forEach((card, index) => {
+
+                    // Show next wave with guaranteed animation
+                    document.querySelectorAll(`.wave-${currentWave}`).forEach((card, index) => {
                         card.style.visibility = 'visible';
-                        setTimeout(() => {
-                            card.classList.add(`scatter-${index + 4}`);
-                            card.style.opacity = '1';
-                            card.style.pointerEvents = 'auto';
-                        }, index * 100 + 50);
+                        card.offsetHeight; // Force reflow
+                        const scatterNum = (currentWave - 1) * 3 + (index + 1);
+                        
+                        requestAnimationFrame(() => {
+                            setTimeout(() => {
+                                card.classList.add(`scatter-${scatterNum}`);
+                                card.style.opacity = '1';
+                                card.style.pointerEvents = 'auto';
+                            }, index * 100 + 50);
+                        });
                     });
-                    nextArrow.style.display = 'none';
-                    if (prevArrow) {
-                        prevArrow.style.display = 'flex';
-                        prevArrow.style.opacity = '1';
-                    }
+
+                    // Navigation arrow visibility
+                    if (currentWave > 1) prevArrow.style.display = 'flex';
+                    if (currentWave === 3) nextArrow.style.display = 'none';
+                    prevArrow.style.opacity = '1';
                 });
             }
 
             if (prevArrow) {
                 prevArrow.addEventListener('click', () => {
-                    currentWave = 1;
-                    document.querySelectorAll('.wave-2').forEach((card, index) => {
-                        card.classList.remove(`scatter-${index + 4}`);
+                    const prevWave = currentWave;
+                    currentWave--;
+
+                    // Hide current wave
+                    document.querySelectorAll(`.wave-${prevWave}`).forEach((card, index) => {
+                        const scatterNum = (prevWave - 1) * 3 + (index + 1);
+                        card.classList.remove(`scatter-${scatterNum}`);
                         card.style.opacity = '0';
                         card.style.pointerEvents = 'none';
-                        setTimeout(() => { if (currentWave !== 2) card.style.visibility = 'hidden'; }, 800);
+                        setTimeout(() => { if (currentWave !== prevWave) card.style.visibility = 'hidden'; }, 800);
                     });
-                    document.querySelectorAll('.wave-1').forEach((card, index) => {
+
+                    // Show previous wave with guaranteed animation
+                    document.querySelectorAll(`.wave-${currentWave}`).forEach((card, index) => {
                         card.style.visibility = 'visible';
-                        setTimeout(() => {
-                            card.classList.add(`scatter-${index + 1}`);
-                            card.style.opacity = '1';
-                            card.style.pointerEvents = 'auto';
-                        }, index * 100 + 50);
+                        card.offsetHeight; // Force reflow
+                        const scatterNum = (currentWave - 1) * 3 + (index + 1);
+                        
+                        requestAnimationFrame(() => {
+                            setTimeout(() => {
+                                card.classList.add(`scatter-${scatterNum}`);
+                                card.style.opacity = '1';
+                                card.style.pointerEvents = 'auto';
+                            }, index * 100 + 50);
+                        });
                     });
-                    prevArrow.style.display = 'none';
-                    if (nextArrow) {
-                        nextArrow.style.display = 'flex';
-                        nextArrow.style.opacity = '1';
-                    }
+
+                    // Navigation arrow visibility
+                    if (currentWave === 1) prevArrow.style.display = 'none';
+                    if (currentWave < 3) nextArrow.style.display = 'flex';
+                    nextArrow.style.opacity = '1';
                 });
             }
 
@@ -529,13 +618,16 @@
                 const img = card.querySelector('img');
                 const p = card.querySelector('p');
                 const caption = p ? p.innerText : "Discovery";
-                const data = (id && projectData[id]) ? projectData[id] : { title: caption, desc: "A special moment from the Narc Showroom collection." };
+                const data = (id && projectData[id]) ? projectData[id] : { title: caption, desc: "A special moment from the collection.", link: "#" };
 
                 if (expandedModal) {
                     if (modalImage && img) modalImage.src = img.src;
                     if (modalCaption) modalCaption.innerText = caption;
                     if (modalTitle) modalTitle.innerText = data.title;
                     if (modalDesc) modalDesc.innerText = data.desc;
+
+                    const exploreLink = expandedModal.querySelector('a');
+                    if (exploreLink) exploreLink.href = data.link;
 
                     expandedModal.style.display = 'flex';
                     if (mainContent) mainContent.classList.add('modal-blur-active');
