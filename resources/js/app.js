@@ -1,6 +1,6 @@
 import './bootstrap';
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
     const heroSection = document.getElementById('hero');
     const cameraSection = document.getElementById('camera-section');
     const cameraTrigger = document.getElementById('camera-trigger');
@@ -25,138 +25,144 @@ document.addEventListener('DOMContentLoaded', () => {
         3: { title: "Rustic Mornings", desc: "The aroma of freshly brewed coffee in a quiet, cozy corner of a hidden gem." }
     };
 
-    let scatterTimeouts = [];
-
-    // 1. Camera Trigger - Snap!
+    // 1. Camera Trigger
     if (cameraTrigger) {
         cameraTrigger.addEventListener('click', () => {
-            // Apply blur to background
-            if (heroSection) heroSection.classList.add('content-blur');
-            if (cameraSection) cameraSection.classList.add('content-blur');
+            if (cameraTrigger.classList.contains('snapped')) return;
             
-            // Hide the camera container with a sink animation
+            cameraTrigger.classList.add('snapped');
             if (cameraContainer) cameraContainer.classList.add('camera-sink');
             
-            // Show the polaroids section
-            setTimeout(() => {
-                if (polaroidsSection) {
-                    polaroidsSection.classList.remove('hidden', 'opacity-0', 'blur-md');
-                    polaroidsSection.classList.add('opacity-100');
-                }
-                
-                // Clear any existing timeouts
-                scatterTimeouts.forEach(clearTimeout);
-                scatterTimeouts = [];
+            if (heroSection) heroSection.classList.add('content-blur');
+            if (cameraSection) cameraSection.classList.add('content-blur');
 
-                // Sequential scattering with a small initial delay to prevent "popping"
+            // Show polaroids
+            if (polaroidsSection) {
+                polaroidsSection.style.display = 'block';
+                polaroidsSection.style.opacity = '1';
+                
                 polaroidCards.forEach((card, index) => {
-                    const timeout = setTimeout(() => {
-                        card.classList.add(`scatter-${index + 1}`);
-                    }, (index + 1) * 400); // Start from index 1 to avoid instant pop
-                    scatterTimeouts.push(timeout);
+                    setTimeout(() => {
+                        card.classList.add('scattered', `scatter-${index + 1}`);
+                        card.style.opacity = '1';
+                        card.style.visibility = 'visible';
+                    }, index * 100 + 50);
                 });
-            }, 300);
+            }
         });
     }
 
-    // 2. Reset Button - Go Back
+    // 2. Reset Camera
     if (resetButton) {
         resetButton.addEventListener('click', () => {
-            // Clear any active scattering timeouts
-            scatterTimeouts.forEach(clearTimeout);
-            scatterTimeouts = [];
-
-            // Pull back all polaroids by removing classes
-            polaroidCards.forEach((card, index) => {
-                card.classList.remove(`scatter-${index + 1}`);
+            cameraTrigger.classList.remove('snapped');
+            
+            polaroidCards.forEach((card) => {
+                card.classList.remove('scattered', 'scatter-1', 'scatter-2', 'scatter-3');
+                card.style.opacity = '0';
             });
 
-            // Wait for the pull-back transition to finish
-            setTimeout(() => {
-                // Blur and fade out the whole polaroids section
-                if (polaroidsSection) {
-                    polaroidsSection.classList.add('opacity-0', 'blur-md');
-                }
+            if (polaroidsSection) {
+                polaroidsSection.style.opacity = '0';
+                setTimeout(() => polaroidsSection.style.display = 'none', 500);
+            }
 
-                setTimeout(() => {
-                    if (polaroidsSection) polaroidsSection.classList.add('hidden');
-                    
-                    // Remove blur from background
-                    if (heroSection) heroSection.classList.remove('content-blur');
-                    if (cameraSection) cameraSection.classList.remove('content-blur');
-                    
-                    // Bring camera back
-                    if (cameraContainer) cameraContainer.classList.remove('camera-sink');
-                    
-                    // Scroll back to camera anchor
-                    const anchor = document.getElementById('camera-anchor');
-                    if (anchor) anchor.scrollIntoView({ behavior: 'smooth' });
-                }, 500); // Wait for the section fade-out
-            }, 800); // Wait for the cards pull-back
+            if (heroSection) heroSection.classList.remove('content-blur');
+            if (cameraSection) cameraSection.classList.remove('content-blur');
+            if (cameraContainer) cameraContainer.classList.remove('camera-sink');
+            
+            const anchor = document.getElementById('camera-anchor');
+            if (anchor) anchor.scrollIntoView({ behavior: 'smooth' });
         });
     }
 
-    // 3. Polaroid Click Event (Expansion)
-    polaroidCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const id = card.getAttribute('data-id');
-            const img = card.querySelector('img');
-            const caption = card.querySelector('p').innerText;
-            const data = projectData[id];
+    // 3. Arrow & Card Clicks
+    const arrow = document.getElementById('trigger-basketball-arrow');
+    if (arrow) {
+        arrow.addEventListener('click', () => triggerBasketballSequence());
+    }
 
-            if (modalImage) modalImage.src = img.src;
+    polaroidCards.forEach(card => {
+        card.addEventListener('click', () => openModal(card));
+    });
+
+    function openModal(card) {
+        const id = card.getAttribute('data-id');
+        const img = card.querySelector('img');
+        const p = card.querySelector('p');
+        const caption = p ? p.innerText : "Discovery";
+        const data = (id && projectData[id]) ? projectData[id] : { title: caption, desc: "A special moment from the Narc Showroom collection." };
+
+        if (expandedModal) {
+            if (modalImage && img) modalImage.src = img.src;
             if (modalCaption) modalCaption.innerText = caption;
             if (modalTitle) modalTitle.innerText = data.title;
             if (modalDesc) modalDesc.innerText = data.desc;
 
-            if (expandedModal) {
+            expandedModal.style.display = 'flex';
+            setTimeout(() => {
                 expandedModal.classList.remove('pointer-events-none', 'opacity-0');
                 expandedModal.classList.add('opacity-100');
-            }
-            
-            setTimeout(() => {
-                if (modalImageContainer) {
-                    modalImageContainer.classList.remove('scale-90');
-                    modalImageContainer.classList.add('scale-100');
-                }
+                if (modalImageContainer) modalImageContainer.classList.replace('scale-90', 'scale-100');
                 if (modalInfo) {
                     modalInfo.classList.remove('opacity-0', 'translate-x-8');
                     modalInfo.classList.add('opacity-100', 'translate-x-0');
                 }
-            }, 100);
-        });
-    });
+            }, 10);
+        }
+    }
 
-    // 4. Close Modal
+    function triggerBasketballSequence() {
+        const basketballStage = document.getElementById('basketball-stage');
+        if (polaroidsSection) polaroidsSection.style.display = 'none';
+        if (basketballStage) basketballStage.style.display = 'block';
+        
+        const backBtn = document.getElementById('back-from-basketball');
+        if (backBtn) backBtn.style.display = 'flex';
+        
+        const sequenceArrow = document.getElementById('sequence-arrow');
+        if (sequenceArrow) sequenceArrow.classList.add('show-arrow');
+        
+        const basketball = document.getElementById('basketball');
+        setTimeout(() => {
+            if (basketball) basketball.classList.add('animate-basketball');
+        }, 500);
+
+        setTimeout(() => {
+            if (sequenceArrow) sequenceArrow.classList.remove('show-arrow');
+        }, 1500);
+
+        setTimeout(() => {
+            document.querySelectorAll('.extra-card').forEach((card, index) => {
+                setTimeout(() => card.classList.add('show'), index * 300);
+            });
+        }, 3500);
+    }
+
     if (closeModal) {
         closeModal.addEventListener('click', () => {
             if (expandedModal) {
                 expandedModal.classList.remove('opacity-100');
                 expandedModal.classList.add('opacity-0');
-                // Delay pointer-events-none so the transition can finish
-                setTimeout(() => {
-                    expandedModal.classList.add('pointer-events-none');
-                }, 500);
-            }
-            
-            if (modalImageContainer) {
-                modalImageContainer.classList.add('scale-90');
-                modalImageContainer.classList.remove('scale-100');
-            }
-            if (modalInfo) {
-                modalInfo.classList.add('opacity-0', 'translate-x-8');
-                modalInfo.classList.remove('opacity-100', 'translate-x-0');
+                setTimeout(() => expandedModal.style.display = 'none', 500);
             }
         });
     }
 
-    // Close on backdrop click
-    if (expandedModal) {
-        expandedModal.addEventListener('click', (e) => {
-            if (e.target === expandedModal) {
-                closeModal.click();
-            }
+    const backFromBasketball = document.getElementById('back-from-basketball');
+    if (backFromBasketball) {
+        backFromBasketball.addEventListener('click', () => {
+            const stage = document.getElementById('basketball-stage');
+            if (stage) stage.style.display = 'none';
+            if (backFromBasketball) backFromBasketball.style.display = 'none';
+            document.querySelectorAll('.extra-card').forEach(card => card.classList.remove('show'));
+            const basketball = document.getElementById('basketball');
+            if (basketball) basketball.classList.remove('animate-basketball');
+            if (resetButton) resetButton.click();
         });
     }
+
+    document.querySelectorAll('.extra-card').forEach(card => {
+        card.addEventListener('click', () => openModal(card));
+    });
 });
-
