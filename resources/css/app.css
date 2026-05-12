@@ -6,67 +6,59 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
-    --font-handwriting: 'Caveat', 'Kalam', cursive;
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-serif: 'Playfair Display', serif;
+    --font-handwriting: 'Dancing Script', cursive;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@400;500;600;700&display=swap');
-
-/* Custom Animations and Utilities */
-
+/* Custom Utilities */
 .font-handwriting {
     font-family: var(--font-handwriting);
 }
 
-/* Ejecting Camera Animation */
-@keyframes cameraDrop {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    50% { transform: translateY(100vh) scale(0.8); opacity: 0.5; }
-    100% { transform: translateY(100vh) scale(0.8); opacity: 0; display: none; }
+.font-serif {
+    font-family: var(--font-serif);
 }
 
-.camera-eject {
-    animation: cameraDrop 1.2s cubic-bezier(0.5, 0, 0.2, 1) forwards;
+.content-blur {
+    filter: blur(8px) brightness(0.9);
+    transition: filter 0.8s ease;
+    pointer-events: none;
 }
 
-/* Polaroid Scattering Animations */
-@keyframes polaroidScatter1 {
-    0% { transform: translate(-50%, 50vh) scale(0.5) rotate(0deg); opacity: 0; }
-    100% { transform: translate(-120%, -10%) scale(1) rotate(-8deg); opacity: 1; }
+/* Animations */
+
+/* Camera Sink Animation - Moving down and out */
+@keyframes cameraSink {
+    0% { transform: translateY(0) scale(1); opacity: 1; filter: blur(0); }
+    100% { transform: translateY(200px) scale(0.8); opacity: 0; filter: blur(10px); }
 }
 
-@keyframes polaroidScatter2 {
-    0% { transform: translate(-50%, 50vh) scale(0.5) rotate(0deg); opacity: 0; }
-    100% { transform: translate(-50%, -20%) scale(1) rotate(4deg); opacity: 1; }
+.camera-sink {
+    animation: cameraSink 1.2s cubic-bezier(0.5, 0, 0.2, 1) forwards;
+    pointer-events: none;
 }
 
-@keyframes polaroidScatter3 {
-    0% { transform: translate(-50%, 50vh) scale(0.5) rotate(0deg); opacity: 0; }
-    100% { transform: translate(20%, -15%) scale(1) rotate(12deg); opacity: 1; }
-}
+/* Polaroid Scattering - Transition Based */
+.scatter-1 { transform: translate(-180%, -60%) scale(1) rotate(-15deg) !important; opacity: 1 !important; }
+.scatter-2 { transform: translate(-50%, -85%) scale(1) rotate(5deg) !important; opacity: 1 !important; }
+.scatter-3 { transform: translate(80%, -65%) scale(1) rotate(18deg) !important; opacity: 1 !important; }
 
 /* Mobile responsive scattering */
 @media (max-width: 640px) {
-    @keyframes polaroidScatter1 {
-        0% { transform: translate(-50%, 50vh) scale(0.5) rotate(0deg); opacity: 0; }
-        100% { transform: translate(-50%, -30%) scale(0.8) rotate(-5deg); opacity: 1; }
-    }
-    @keyframes polaroidScatter2 {
-        0% { transform: translate(-50%, 50vh) scale(0.5) rotate(0deg); opacity: 0; }
-        100% { transform: translate(-50%, 0%) scale(0.8) rotate(3deg); opacity: 1; }
-    }
-    @keyframes polaroidScatter3 {
-        0% { transform: translate(-50%, 50vh) scale(0.5) rotate(0deg); opacity: 0; }
-        100% { transform: translate(-50%, 30%) scale(0.8) rotate(-2deg); opacity: 1; }
-    }
+    .scatter-1 { transform: translate(-50%, -60%) scale(0.7) rotate(-5deg) !important; }
+    .scatter-2 { transform: translate(-50%, 0%) scale(0.7) rotate(3deg) !important; }
+    .scatter-3 { transform: translate(-50%, 60%) scale(0.7) rotate(-2deg) !important; }
 }
-
-.scatter-1 { animation: polaroidScatter1 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-.scatter-2 { animation: polaroidScatter2 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s forwards; }
-.scatter-3 { animation: polaroidScatter3 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards; }
 
 .polaroid-card {
-    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
     left: 50%;
+    top: 50%;
+    transform: translate(-50%, 100vh) scale(0.2) rotate(0deg);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.5, 0, 0.2, 1);
+    z-index: 10;
 }
+
+/* We don't need reverse-scatter anymore as the transition handles it */
+
