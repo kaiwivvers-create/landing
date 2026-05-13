@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Portfolio - Vintage Experience</title>
+    <title>HIROSEEEEEEEEEE</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -155,8 +155,17 @@
         }
 
         @keyframes glowPulse {
-            0%, 100% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 0.9; transform: scale(1.15); }
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.9;
+                transform: scale(1.15);
+            }
         }
 
         .animate-glow {
@@ -246,7 +255,7 @@
         <!-- Hero Section -->
         <section id="hero"
             class="relative min-h-screen flex items-center justify-center overflow-hidden transition-all duration-700"
-            style="background-image: url('https://m.media-amazon.com/images/S/pv-target-images/109ac618e6d7222c81d3b8cb8d869792ce41d34c4fc0fc2d8d4cb13fb195be23.jpg'); background-size: cover; background-position: center;">
+            style="background-image: url('https://i.pinimg.com/736x/86/c5/a9/86c5a938dcda41d5c97660d0f5f60403.jpg'); background-size: cover; background-position: center;">
             <!-- Darkened Overlay for Text Readability -->
             <div class="absolute inset-0 bg-slate-900/30 z-0"></div>
 
@@ -270,13 +279,16 @@
                 <!-- Text Content -->
                 <div class="flex-1 text-center md:text-left relative">
                     <!-- Text Background Glow -->
-                    <div class="absolute -top-32 -left-32 w-[140%] h-[160%] bg-blue-400/40 blur-[90px] rounded-full z-0 pointer-events-none animate-glow"></div>
-                    
+                    <div
+                        class="absolute -top-32 -left-32 w-[140%] h-[160%] bg-blue-400/40 blur-[90px] rounded-full z-0 pointer-events-none animate-glow">
+                    </div>
+
                     <div class="relative z-10">
-                        <h1 class="text-6xl md:text-8xl font-serif font-black text-white mb-6 leading-tight drop-shadow-lg">
-                            My Own <br /> <span class="text-indigo-200 italic">Portfolio Page.</span>
+                        <h1
+                            class="text-6xl md:text-8xl font-serif font-black text-white mb-6 leading-tight drop-shadow-lg">
+                            My Recent<br /> <span class="text-indigo-200 italic">Projects.</span>
                         </h1>
-                        <p class="text-xl md:text-2xl text-stone-100 max-w-lg mb-8 font-medium drop-shadow-md">
+                        <p style="color: #E0E7FF;" class="text-xl md:text-2xl max-w-lg mb-8 font-medium drop-shadow-md">
                             “One more animation won’t hurt”.
                         </p>
                         <a href="#camera-anchor" id="start-exploring-btn"
@@ -294,7 +306,7 @@
                 <div class="flex-1 flex justify-center md:justify-end relative">
                     <div
                         class="relative w-72 h-72 sm:w-96 sm:h-96 md:w-[450px] md:h-[600px] rounded-2xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-700 group">
-                        <img src="https://static.wikia.nocookie.net/go-nakamura/images/0/05/Opera_cover_80.jpg/revision/latest?cb=20210621231417"
+                        <img src="{{ str_starts_with($chars = 'https://i.pinimg.com/736x/92/2d/93/922d933c1625f49d86e6657344bdec70.jpg', 'http') ? $chars : asset($chars) }}"
                             alt="Character"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                         <div class="absolute inset-0 ring-1 ring-inset ring-white/20 rounded-2xl"></div>
@@ -312,25 +324,28 @@
         <section id="camera-section"
             class="relative min-h-screen flex flex-col items-center justify-center py-20 z-20 -mt-24"
             style="background: linear-gradient(to bottom, #E0E7FF 0%, #F5F7FF 50%, #FFFFFF 100%);">
-            
+
             <!-- Decorative Background Polaroids -->
             <div class="bg-polaroid bg-polaroid-1 animate-float">
-                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=300&auto=format&fit=crop" alt="Vintage Flower">
+                <img src="https://i.pinimg.com/736x/1e/04/f8/1e04f88101d471bac7e076666cbaa085.jpg" alt="Vintage Flower">
             </div>
             <div class="bg-polaroid bg-polaroid-2 animate-float">
-                <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=300&auto=format&fit=crop" alt="Pink Aesthetic">
+                <img src="https://i.pinimg.com/736x/dc/71/1f/dc711f5a25804b66aa7a65484de88a60.jpg" alt="Pink Aesthetic">
             </div>
             <div class="bg-polaroid bg-polaroid-3 animate-float">
-                <img src="https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?q=80&w=300&auto=format&fit=crop" alt="Blue Sea">
+                <img src="https://i.pinimg.com/736x/0f/25/01/0f2501f2adc01de038b75f7bb32dd22e.jpg" alt="Blue Sea">
             </div>
             <div class="bg-polaroid bg-polaroid-4 animate-float">
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=300&auto=format&fit=crop" alt="Beach">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=300&auto=format&fit=crop"
+                    alt="Beach">
             </div>
             <div class="bg-polaroid bg-polaroid-5 animate-float">
-                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=300&auto=format&fit=crop" alt="Mountains">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=300&auto=format&fit=crop"
+                    alt="Mountains">
             </div>
             <div class="bg-polaroid bg-polaroid-6 animate-float">
-                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=300&auto=format&fit=crop" alt="Lake">
+                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=300&auto=format&fit=crop"
+                    alt="Lake">
             </div>
 
             <div id="camera-container"
