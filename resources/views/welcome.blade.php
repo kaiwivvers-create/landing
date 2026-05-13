@@ -117,6 +117,123 @@
         #polaroids-section {
             transition: filter 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
         }
+
+        /* Background Decorative Polaroids */
+        .bg-polaroid {
+            position: absolute;
+            width: 140px;
+            height: 160px;
+            background: white;
+            padding: 8px;
+            padding-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 2px;
+            filter: blur(3px) brightness(0.95);
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 5;
+            transition: all 1s ease-in-out;
+        }
+
+        .bg-polaroid img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: #eee;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(var(--base-rotate));
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(calc(var(--base-rotate) + 5deg));
+            }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.15); }
+        }
+
+        .animate-glow {
+            animation: glowPulse 6s ease-in-out infinite;
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .bg-polaroid-1 {
+            top: 15%;
+            left: 10%;
+            --base-rotate: -15deg;
+            transform: rotate(-15deg);
+            animation-delay: 0s;
+        }
+
+        .bg-polaroid-2 {
+            top: 65%;
+            left: 5%;
+            --base-rotate: 10deg;
+            transform: rotate(10deg);
+            animation-delay: 1s;
+        }
+
+        .bg-polaroid-3 {
+            top: 10%;
+            right: 12%;
+            --base-rotate: 12deg;
+            transform: rotate(12deg);
+            animation-delay: 2s;
+        }
+
+        .bg-polaroid-4 {
+            top: 75%;
+            right: 8%;
+            --base-rotate: -8deg;
+            transform: rotate(-8deg);
+            animation-delay: 1.5s;
+        }
+
+        .bg-polaroid-5 {
+            top: 40%;
+            left: 15%;
+            width: 100px;
+            height: 120px;
+            --base-rotate: -5deg;
+            transform: rotate(-5deg);
+            filter: blur(5px);
+            opacity: 0.3;
+            animation-delay: 3s;
+        }
+
+        .bg-polaroid-6 {
+            top: 35%;
+            right: 18%;
+            width: 110px;
+            height: 130px;
+            --base-rotate: 7deg;
+            transform: rotate(7deg);
+            filter: blur(4px);
+            opacity: 0.35;
+            animation-delay: 0.5s;
+        }
+
+        @media (max-width: 768px) {
+            .bg-polaroid {
+                width: 100px;
+                height: 120px;
+            }
+
+            .bg-polaroid-5,
+            .bg-polaroid-6 {
+                display: none;
+            }
+        }
     </style>
 
     <!-- Styles / Scripts -->
@@ -151,21 +268,26 @@
             <div
                 class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 pt-20">
                 <!-- Text Content -->
-                <div class="flex-1 text-center md:text-left">
-                    <h1 class="text-6xl md:text-8xl font-serif font-black text-white mb-6 leading-tight drop-shadow-lg">
-                        My Own <br /> <span class="text-indigo-200 italic">Portfolio Page.</span>
-                    </h1>
-                    <p class="text-xl md:text-2xl text-stone-100 max-w-lg mb-8 font-medium drop-shadow-md">
-                        Welcome to my personal showcase.
-                    </p>
-                    <a href="#camera-anchor" id="start-exploring-btn"
-                        class="inline-flex items-center px-8 py-4 bg-slate-900 text-white rounded-full font-bold text-lg hover:bg-indigo-600 transition-all duration-300 shadow-xl hover:-translate-y-1">
-                        Start Exploring
-                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                        </svg>
-                    </a>
+                <div class="flex-1 text-center md:text-left relative">
+                    <!-- Text Background Glow -->
+                    <div class="absolute -top-32 -left-32 w-[140%] h-[160%] bg-blue-400/40 blur-[90px] rounded-full z-0 pointer-events-none animate-glow"></div>
+                    
+                    <div class="relative z-10">
+                        <h1 class="text-6xl md:text-8xl font-serif font-black text-white mb-6 leading-tight drop-shadow-lg">
+                            My Own <br /> <span class="text-indigo-200 italic">Portfolio Page.</span>
+                        </h1>
+                        <p class="text-xl md:text-2xl text-stone-100 max-w-lg mb-8 font-medium drop-shadow-md">
+                            “One more animation won’t hurt”.
+                        </p>
+                        <a href="#camera-anchor" id="start-exploring-btn"
+                            class="inline-flex items-center px-8 py-4 bg-slate-900 text-white rounded-full font-bold text-lg hover:bg-indigo-600 transition-all duration-300 shadow-xl hover:-translate-y-1">
+                            Start Exploring
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Character Placeholder -->
@@ -189,6 +311,27 @@
         <section id="camera-section"
             class="relative min-h-screen flex flex-col items-center justify-center py-20 z-20 -mt-24"
             style="background: linear-gradient(to bottom, #E0E7FF 0%, #F5F7FF 50%, #FFFFFF 100%);">
+            
+            <!-- Decorative Background Polaroids -->
+            <div class="bg-polaroid bg-polaroid-1 animate-float">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=300&auto=format&fit=crop" alt="Vintage Flower">
+            </div>
+            <div class="bg-polaroid bg-polaroid-2 animate-float">
+                <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=300&auto=format&fit=crop" alt="Pink Aesthetic">
+            </div>
+            <div class="bg-polaroid bg-polaroid-3 animate-float">
+                <img src="https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?q=80&w=300&auto=format&fit=crop" alt="Blue Sea">
+            </div>
+            <div class="bg-polaroid bg-polaroid-4 animate-float">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=300&auto=format&fit=crop" alt="Beach">
+            </div>
+            <div class="bg-polaroid bg-polaroid-5 animate-float">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=300&auto=format&fit=crop" alt="Mountains">
+            </div>
+            <div class="bg-polaroid bg-polaroid-6 animate-float">
+                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=300&auto=format&fit=crop" alt="Lake">
+            </div>
+
             <div id="camera-container"
                 class="relative transition-all duration-[1500ms] ease-in-out cursor-pointer group">
                 <!-- The Vintage Camera (Built with CSS) -->
