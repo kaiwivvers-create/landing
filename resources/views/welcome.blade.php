@@ -129,7 +129,7 @@
         <!-- Hero Section -->
         <section id="hero"
             class="relative min-h-screen flex items-center justify-center overflow-hidden transition-all duration-700"
-            style="background-image: url('https://i.imgur.com/eVj0QEq.jpeg'); background-size: cover; background-position: center;">
+            style="background-image: url('https://m.media-amazon.com/images/S/pv-target-images/109ac618e6d7222c81d3b8cb8d869792ce41d34c4fc0fc2d8d4cb13fb195be23.jpg'); background-size: cover; background-position: center;">
             <!-- Darkened Overlay for Text Readability -->
             <div class="absolute inset-0 bg-slate-900/30 z-0"></div>
 
@@ -172,7 +172,8 @@
                 <div class="flex-1 flex justify-center md:justify-end relative">
                     <div
                         class="relative w-72 h-72 sm:w-96 sm:h-96 md:w-[450px] md:h-[600px] rounded-2xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-700 group">
-                        <img src="https://i.imgur.com/KfJccBX.jpeg" alt="Character"
+                        <img src="https://static.wikia.nocookie.net/go-nakamura/images/0/05/Opera_cover_80.jpg/revision/latest?cb=20210621231417"
+                            alt="Character"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                         <div class="absolute inset-0 ring-1 ring-inset ring-white/20 rounded-2xl"></div>
                     </div>
@@ -556,7 +557,7 @@
                         card.style.visibility = 'visible';
                         card.offsetHeight; // Force reflow
                         const scatterNum = (currentWave - 1) * 3 + (index + 1);
-                        
+
                         requestAnimationFrame(() => {
                             setTimeout(() => {
                                 card.classList.add(`scatter-${scatterNum}`);
@@ -592,7 +593,7 @@
                         card.style.visibility = 'visible';
                         card.offsetHeight; // Force reflow
                         const scatterNum = (currentWave - 1) * 3 + (index + 1);
-                        
+
                         requestAnimationFrame(() => {
                             setTimeout(() => {
                                 card.classList.add(`scatter-${scatterNum}`);
