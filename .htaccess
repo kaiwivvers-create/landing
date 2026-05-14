@@ -1,6 +1,12 @@
 <IfModule mod_rewrite.c>
-    RewriteEngine on
-    # Redirect everything to the public folder
-    RewriteCond %{REQUEST_URI} !^/public/
-    RewriteRule ^(.*)$ /public/$1 [L]
+    RewriteEngine On
+    
+    # Allow direct access to existing files/folders
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+    
+    # Send all other requests to index.php in the root
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
 </IfModule>
